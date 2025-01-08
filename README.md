@@ -8,6 +8,6 @@ My journey's writeup is found here:
 
 https://techwebunraveled.xyz/tags/lfs/
 
-## Prerequisites and CH1
+## Prerequisites + CH1 + CH2
 
 [Set up the environment to start working](https://techwebunraveled.xyz/posts/lfs-diaries-1/)
