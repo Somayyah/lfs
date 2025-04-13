@@ -142,7 +142,25 @@
 	watari@vbox:~$ 
 
 	```
-	- Creating the partition and file system:
+	- Creating the partition
 	
 	Using liveCD image, with GParted I shrank /dev/sda2 to 12 Gigs and created a new partition off the empty space.
-	
+	- Creating the filesystem
+	```
+	mkdir /mnt/lfs
+	blkid	### To get the UUID for the new partition
+	nano /etc/fstab		### To mount the new filesystem with the line 'UUID="<UUID>"     /mnt/lfs        ext4    defaults        0       0'
+	umount -a  ### To mount with the fstab file
+	```
+	- New layout
+	```
+	watari@vbox:~$ df -h
+	Filesystem      Size  Used Avail Use% Mounted on
+	tmpfs           392M  1.5M  391M   1% /run
+	/dev/sda2        13G  9.9G  2.0G  84% /
+	tmpfs           2.0G     0  2.0G   0% /dev/shm
+	tmpfs           5.0M  8.0K  5.0M   1% /run/lock
+	tmpfs           392M  128K  392M   1% /run/user/1000
+	/dev/sr1         57M   57M     0 100% /media/watari/VBox_GAs_7.1.4
+	/dev/sda3        46G   24K   44G   1% /mnt/lfs
+	```
