@@ -37,10 +37,10 @@
 	watari@vbox:~$ 
 	```
 	
-	What to do:
+	- What to do:
 	
 	```
 	$ sudo apt install bison gawk texinfo
 	$ sudo ln -sf bash /bin/sh
 	```
-	- 
+- Creating a new partition
