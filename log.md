@@ -44,3 +44,101 @@
 	$ sudo ln -sf bash /bin/sh
 	```
 - Creating a new partition
+	- Current layout:
+	```
+	watari@vbox:~$ sudo fdisk -l
+	Disk /dev/loop0: 4 KiB, 4096 bytes, 8 sectors
+	Units: sectors of 1 * 512 = 512 bytes
+	Sector size (logical/physical): 512 bytes / 512 bytes
+	I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+	Disk /dev/loop1: 73.89 MiB, 77479936 bytes, 151328 sectors
+	Units: sectors of 1 * 512 = 512 bytes
+	Sector size (logical/physical): 512 bytes / 512 bytes
+	I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+	Disk /dev/loop2: 73.89 MiB, 77475840 bytes, 151320 sectors
+	Units: sectors of 1 * 512 = 512 bytes
+	Sector size (logical/physical): 512 bytes / 512 bytes
+	I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+	Disk /dev/loop3: 258.04 MiB, 270569472 bytes, 528456 sectors
+	Units: sectors of 1 * 512 = 512 bytes
+	Sector size (logical/physical): 512 bytes / 512 bytes
+	I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+	Disk /dev/loop4: 11.13 MiB, 11673600 bytes, 22800 sectors
+	Units: sectors of 1 * 512 = 512 bytes
+	Sector size (logical/physical): 512 bytes / 512 bytes
+	I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+	Disk /dev/loop5: 91.69 MiB, 96141312 bytes, 187776 sectors
+	Units: sectors of 1 * 512 = 512 bytes
+	Sector size (logical/physical): 512 bytes / 512 bytes
+	I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+	Disk /dev/loop6: 516.01 MiB, 541073408 bytes, 1056784 sectors
+	Units: sectors of 1 * 512 = 512 bytes
+	Sector size (logical/physical): 512 bytes / 512 bytes
+	I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+	Disk /dev/loop7: 10.77 MiB, 11292672 bytes, 22056 sectors
+	Units: sectors of 1 * 512 = 512 bytes
+	Sector size (logical/physical): 512 bytes / 512 bytes
+	I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+	Disk /dev/sda: 60 GiB, 64424509440 bytes, 125829120 sectors
+	Disk model: VBOX HARDDISK   
+	Units: sectors of 1 * 512 = 512 bytes
+	Sector size (logical/physical): 512 bytes / 512 bytes
+	I/O size (minimum/optimal): 512 bytes / 512 bytes
+	Disklabel type: gpt
+	Disk identifier: 5BA772D1-BCCC-4CBE-8245-24EE301EE3DB
+
+	Device     Start       End   Sectors Size Type
+	/dev/sda1   2048      4095      2048   1M BIOS boot
+	/dev/sda2   4096 125827071 125822976  60G Linux filesystem
+
+
+	Disk /dev/loop8: 10.83 MiB, 11354112 bytes, 22176 sectors
+	Units: sectors of 1 * 512 = 512 bytes
+	Sector size (logical/physical): 512 bytes / 512 bytes
+	I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+	Disk /dev/loop9: 44.44 MiB, 46596096 bytes, 91008 sectors
+	Units: sectors of 1 * 512 = 512 bytes
+	Sector size (logical/physical): 512 bytes / 512 bytes
+	I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+	Disk /dev/loop10: 44.45 MiB, 46604288 bytes, 91024 sectors
+	Units: sectors of 1 * 512 = 512 bytes
+	Sector size (logical/physical): 512 bytes / 512 bytes
+	I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+	Disk /dev/loop11: 568 KiB, 581632 bytes, 1136 sectors
+	Units: sectors of 1 * 512 = 512 bytes
+	Sector size (logical/physical): 512 bytes / 512 bytes
+	I/O size (minimum/optimal): 512 bytes / 512 bytes
+	watari@vbox:~$ 
+	watari@vbox:~$ df -h
+	Filesystem      Size  Used Avail Use% Mounted on
+	tmpfs           392M  1.5M  391M   1% /run
+	/dev/sda2        59G  9.9G   46G  18% /
+	tmpfs           2.0G     0  2.0G   0% /dev/shm
+	tmpfs           5.0M  8.0K  5.0M   1% /run/lock
+	tmpfs           392M  128K  392M   1% /run/user/1000
+	/dev/sr0         57M   57M     0 100% /media/watari/VBox_GAs_7.1.4
+	watari@vbox:~$ 
+
+	```
