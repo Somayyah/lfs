@@ -164,3 +164,7 @@
 	/dev/sr1         57M   57M     0 100% /media/watari/VBox_GAs_7.1.4
 	/dev/sda3        46G   24K   44G   1% /mnt/lfs
 	```
+- Setting the environment variables
+
+Listed in env-variables.sh
+
