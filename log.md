@@ -171,4 +171,27 @@
 	sudo bash -c 'echo "export LFS=/mnt/lfs" >> /root/.bash_profile'
 	```
 
+- Finishing mounting the fileSystem
 
+	- Creating the mount point
+	```
+	mkdir -pv $LFS
+	mount -v -t ext4 /dev/sda3 $LFS ### Already done from previous steps but just in case
+	```
+	- Create the convenient partitions
+	
+	```
+	sudo mkdir -vp $LFS/{home,root} $LFS/boot/efi $LFS/opt $LFS/tmp $LFS/sources
+	sudo chmod -v a+wt $LFS/sources
+	sudo chown root:root $LFS/sources/*
+	```
+
+- Downloading packages and patches
+	- Packages
+	```
+	
+	```
+	- Patches
+	```
+	
+	```
