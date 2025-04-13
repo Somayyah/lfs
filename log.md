@@ -181,7 +181,7 @@
 	- Create the convenient partitions
 	
 	```
-	sudo mkdir -vp $LFS/{home,root} $LFS/boot/efi $LFS/opt $LFS/tmp $LFS/sources
+	sudo mkdir -vp $LFS/{home,root,opt,tmp,sources,patches,boot/efi,etc,var,tools,usr/{bin,lib,sbin}}
 	sudo chmod -v a+wt $LFS/sources
 	```
 
@@ -195,4 +195,30 @@
 	- Patches
 	```
 	wget https://raw.githubusercontent.com/Somayyah/lfs/refs/heads/main/get-patches ; sudo mkdir $LFS/patches ; sudo wget --input-file=get-patches --continue --directory-prefix=$LFS/patches ; sudo chown root:root $LFS/patches/*
+	```
+	- Creating directories heirarchy
+	
+	```
+	# As sudo
+	
+	mkdir -pv $LFS/{etc,var} $LFS/usr/{bin,lib,sbin}
+	for i in bin lib sbin; do
+		ln -sv usr/$i $LFS/$i
+	done
+	case $(uname -m) in
+		x86_64) mkdir -pv $LFS/lib64 ;;
+	esac
+	```
+- Create the LFS user
+	```
+	sudo groupadd lfs ; sudo useradd -s /bin/bash -g lfs -m -k /dev/null lfs
+	```
+	
+	And grant it the necessary privilages
+	
+	```
+	chown -v lfs $LFS/{usr{,/*},lib,var,etc,bin,sbin,tools}
+	case $(uname -m) in
+		x86_64) chown -v lfs $LFS/lib64 ;;
+	esac
 	```
