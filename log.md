@@ -183,15 +183,16 @@
 	```
 	sudo mkdir -vp $LFS/{home,root} $LFS/boot/efi $LFS/opt $LFS/tmp $LFS/sources
 	sudo chmod -v a+wt $LFS/sources
-	sudo chown root:root $LFS/sources/*
 	```
 
 - Downloading packages and patches
 	- Packages
 	```
-	
+	wget https://raw.githubusercontent.com/Somayyah/lfs/refs/heads/main/get-list-systemd
+	wget --input-file=get-list-systemd --continue --directory-prefix=$LFS/sources
+	sudo chown root:root $LFS/sources/*
 	```
 	- Patches
 	```
-	
+	wget https://raw.githubusercontent.com/Somayyah/lfs/refs/heads/main/get-patches ; sudo mkdir $LFS/patches ; sudo wget --input-file=get-patches --continue --directory-prefix=$LFS/patches ; sudo chown root:root $LFS/patches/*
 	```
