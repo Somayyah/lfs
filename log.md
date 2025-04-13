@@ -2,7 +2,7 @@
 # 04-13-2025
 
 - Created the VM, preparing.
-	- version-check.sh
+	- ✅ version-check.sh
 	```
 	watari@vbox:~$ bash version-check.sh 
 	OK:    Coreutils 9.4    >= 8.1
