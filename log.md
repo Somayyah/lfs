@@ -142,3 +142,7 @@
 	watari@vbox:~$ 
 
 	```
+	- Creating the partition and file system:
+	
+	Using liveCD image, with GParted I shrank /dev/sda2 to 12 Gigs and created a new partition off the empty space.
+	
