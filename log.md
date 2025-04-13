@@ -166,5 +166,9 @@
 	```
 - Setting the environment variables
 
-Listed in env-variables.sh
+	Listed in env-variables.sh, export to ~/.bash_profile and /root/.bash_profile to persist:
+	```
+	sudo bash -c 'echo "export LFS=/mnt/lfs" >> /root/.bash_profile'
+	```
+
 
