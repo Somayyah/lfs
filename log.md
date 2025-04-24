@@ -291,3 +291,5 @@ final system.
 	```
 	
 	I'll track all the system triplet changes in system_triplet.md, I'll replace "Build, host, target" with "Host, staging, target" because it's less confusing to me.
+
+- We can't build glibc without a working compiler, and can’t have a fully functional compiler without a functional version of libgcc. So, we build a minimal version of libgcc to get started, use it to build glibc, and then finish the job by building the fully functional libgcc and libstdc++. Cross compiler will be installed in $LFS/tools.
