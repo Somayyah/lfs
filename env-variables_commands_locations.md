@@ -29,13 +29,25 @@ export _=/usr/bin/env
 # Important commands
 
 ```
+
+# NOTE: Remove the prefix $LFS_TGT- to use the commands as sudoer, for example:
+
+	ld --verbose | grep SEARCH	
+
 # As lfs
 
 	## After you set up the cross-compilation toolchain. To illustrate the current search paths and their order 
 
 	$LFS_TGT-ld --verbose | grep SEARCH
 
+	## To find out which standard linker gcc will use
+	
+	$LFS_TGT-gcc -print-prog-name=ld
+	
+	## show detailed information about the preprocessor, compilation, assembly stages including gcc's search paths for included headers and their
+order. 
+	$LFS_TGT-gcc -v example.c
+	
 # As Sudoer
 
-	## 
 ```
