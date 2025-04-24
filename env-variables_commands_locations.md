@@ -31,7 +31,7 @@ export _=/usr/bin/env
 ```
 # As lfs
 
-	## To illustrate the current search paths and their order 
+	## After you set up the cross-compilation toolchain. To illustrate the current search paths and their order 
 
 	$LFS_TGT-ld --verbose | grep SEARCH
 
