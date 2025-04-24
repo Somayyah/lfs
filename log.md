@@ -4,6 +4,7 @@
 Finishing Parts i && ii: Preparation & Preparing for the build
 
 ## log
+
 - Created the VM, preparing.
 	- ✅ version-check.sh
 	```
@@ -267,7 +268,11 @@ final system.
 
 ## Taxonomy
 
-- Cross compilation: refers to the process of building software on one platform (the build host) that is intended to run on a different platform (the target system).
+- Cross compilation : The process of building software on one platform (the build host) that is intended to run on a different platform (the target system).
+- The build : The machine where we build programs. Note that this machine is also referred to as the “host.”
+- The host : The machine/system where the built programs will run. Note that this use of “host” is not the same as in other sections.
+- The target : Only used for compilers. It is the machine the compiler produces code for. It may be different from both the build and the host.
 
 ## log
+
 - 
