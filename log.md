@@ -3,6 +3,7 @@
 
 Finishing Parts i && ii: Preparation & Preparing for the build
 
+## log
 - Created the VM, preparing.
 	- ✅ version-check.sh
 	```
@@ -257,6 +258,16 @@ Finishing Parts i && ii: Preparation & Preparing for the build
 
 # 04-24-2025
 
-Finishing part iii: Building the LFS Cross Toolchain and Temporary Tools
+Finishing part iii: Building the LFS Cross Toolchain and Temporary Tools.
 
+Divided into three stages: first, building a cross compiler and its associated libraries; second, using this
+cross toolchain to build several utilities in a way that isolates them from the host distribution; and third, entering the
+chroot environment (which further improves host isolation) and constructing the remaining tools needed to build the
+final system.
+
+## Taxonomy
+
+- Cross compilation: refers to the process of building software on one platform (the build host) that is intended to run on a different platform (the target system).
+
+## log
 - 
