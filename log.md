@@ -256,3 +256,22 @@ Divided into three stages:
 		--enable-default-hash-style=gnu
 	make & make install
 	```
+- gcc
+
+	```
+	# requires the GMP, MPFR and MPC packages
+	tar -xf gcc-14.2.0.tar.xz ; cd gcc-14.2.0
+	tar -xf ../mpfr-4.2.1.tar.xz     
+	mv -v mpfr-4.2.1 mpfr       
+	tar -xf ../gmp-6.3.0.tar.xz 
+	mv -v gmp-6.3.0/ gmp
+	tar -xf ../mpc-1.3.1.tar.gz 
+	mv -v mpc-1.3.1/ mpc
+	case $(uname -m) in
+		x86_64)
+			sed -e '/m64=/s/lib64/lib/' \
+				-i.orig gcc/config/i386/t-linux64
+		;;
+	esac
+	mkdir -v build ; cd build
+	```
