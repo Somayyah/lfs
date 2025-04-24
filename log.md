@@ -290,4 +290,4 @@ final system.
 	lfs:~$
 	```
 	
-	
+	I'll track all the system triplet changes in system_triplet.md, I'll replace "Build, host, target" with "Host, staging, target" because it's less confusing to me.
