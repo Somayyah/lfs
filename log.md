@@ -171,6 +171,7 @@
 ---
 
 # Finishing Part III: Building the LFS Cross Toolchain and Temporary Tools
+
 ## 04-24-2025
 
 Divided into three stages:
@@ -224,3 +225,21 @@ Divided into three stages:
 - It's ok to see **offset** or **fuzz** warnings while patching.
 - During compilation, you may encounter **warnings** about deprecated C/C++ syntax. That’s normal.
 
+**Important** : Before proceeding read the notes in page 44.
+
+## 04-25-2025
+
+### log 
+
+- Important notes for each package:
+	a. Using the tar program, extract the package to be built. In Chapter 5 and Chapter 6, ensure you are the lfs user when extracting the package. Do not use any method except the tar command to extract the source code. Notably, using the cp -R command to copy the source code tree somewhere else can destroy timestamps in the source tree, and cause the build to fail.
+	b. Change to the directory created when the package was extracted.
+	c. Follow the instructions for building the package.
+	d. Change back to the sources directory when the build is complete.
+	e. Delete the extracted source directory unless instructed otherwise.
+
+- Binutlis-pass1
+
+```
+
+```
