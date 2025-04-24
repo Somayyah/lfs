@@ -1,6 +1,8 @@
 	
 # 04-13-2025
 
+Finishing Parts i && ii: Preparation & Preparing for the build
+
 - Created the VM, preparing.
 	- ✅ version-check.sh
 	```
@@ -253,4 +255,8 @@
 		
 - Building the LFS Cross Toolchain and Temporary Tools
 
-...TBD
+# 04-24-2025
+
+Finishing part iii: Building the LFS Cross Toolchain and Temporary Tools
+
+- 
