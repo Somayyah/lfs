@@ -1,9 +1,8 @@
-	
-# 04-13-2025
+# Finishing Parts i && ii: Preparation & Preparing for the build
 
-Finishing Parts i && ii: Preparation & Preparing for the build
+## 04-13-2025
 
-## log
+### log
 
 - Created the VM, preparing.
 	- ✅ version-check.sh
@@ -257,23 +256,24 @@ Finishing Parts i && ii: Preparation & Preparing for the build
 		
 - Building the LFS Cross Toolchain and Temporary Tools
 
-# 04-24-2025
+# Finishing part iii: Building the LFS Cross Toolchain and Temporary Tools.
 
-Finishing part iii: Building the LFS Cross Toolchain and Temporary Tools.
+## 04-24-2025
+
 
 Divided into three stages: first, building a cross compiler and its associated libraries; second, using this
 cross toolchain to build several utilities in a way that isolates them from the host distribution; and third, entering the
 chroot environment (which further improves host isolation) and constructing the remaining tools needed to build the
 final system.
 
-## Taxonomy
+### Taxonomy
 
 - Cross compilation : The process of building software on one platform (the build host) that is intended to run on a different platform (the target system).
 - The build : The machine where we build programs. Note that this machine is also referred to as the “host.”
 - The host : The machine/system where the built programs will run. Note that this use of “host” is not the same as in other sections.
 - The target : Only used for compilers. It is the machine the compiler produces code for. It may be different from both the build and the host.
 
-## log
+### log
 
 - Let's figure out the system triplet for the build machine:
 	```
@@ -282,3 +282,12 @@ final system.
 	watari@vbox:~$ 
 
 	```
+	For the host system:
+	
+	```
+	lfs:~$ gcc -dumpmachine
+	x86_64-linux-gnu
+	lfs:~$
+	```
+	
+	
