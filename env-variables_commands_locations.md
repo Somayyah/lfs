@@ -19,6 +19,8 @@ export LFS=/mnt/lfs
 export CONFIG_SITE=/mnt/lfs/usr/share/config.site
 export PATH=/mnt/lfs/tools/bin:/usr/bin
 export _=/usr/bin/env
+export DESTDIR=
+export CC_FOR_TARGET=$LFS_TGT-gcc
 
 # Notable locations
 
