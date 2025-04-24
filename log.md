@@ -275,4 +275,10 @@ final system.
 
 ## log
 
-- 
+- Let's figure out the system triplet for the build machine:
+	```
+	watari@vbox:~$ gcc -dumpmachine
+	x86_64-linux-gnu
+	watari@vbox:~$ 
+
+	```
