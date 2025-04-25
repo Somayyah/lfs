@@ -134,7 +134,7 @@
   ```
   And grant it the necessary privileges:
   ```bash
-  chown -v lfs $LFS/{usr{,/*},lib,var,etc,bin,sbin,tools}
+  chown -v lfs $LFS/{usr{,/*},lib,var,etc,bin,sbin,tools} 
   case $(uname -m) in
       x86_64) chown -v lfs $LFS/lib64 ;;
   esac
@@ -314,3 +314,42 @@ Divided into three stages:
 	```
 	
 	**I had to redo this step as I did the first commands as the original sudoer user not lfs, luckily I had the snapshot ready to revert back**
+
+- glibc-pass1
+
+	GCC is the compiler for C and C++. It ships with the C++ standard library (libstdc++), but not glibc. glibc is the C standard library and must be compiled separately. GCC depends on glibc to function fully, especially for linking and runtime support. That’s why we compile a temporary GCC first, then glibc, then a final GCC that uses the real glibc and builds the full libstdc++.
+
+	The book states to create $LFS/lib64 symlinks as below:
+
+	```
+	case $(uname -m) in
+		i?86) ln -sfv ld-linux.so.2 $LFS/lib/ld-lsb.so.3
+		;;
+		x86_64) ln -sfv ../lib/ld-linux-x86-64.so.2 $LFS/lib64
+			ln -sfv ../lib/ld-linux-x86-64.so.2 $LFS/lib64/ld-lsb-x86-64.so.3
+		;;
+	esac
+	
+	patch -Np1 -i ../glibc-2.40-fhs-1.patch
+	```
+	
+	But we have this note in part ii:
+	
+	> The LFS editors have deliberately decided not to use a /usr/lib64 directory. Several steps are taken to be
+	> sure the toolchain will not use it. If for any reason this directory appears (either because you made an error
+	> in following the instructions, or because you installed a binary package that created it after finishing LFS), 
+	> it may break your system. You should always be sure this directory does not exist.
+	
+	So instead I'll try using $LFS/lib instead:
+	
+	```
+	case $(uname -m) in
+	i?86) 
+	   ln -sfv ld-linux.so.2 $LFS/lib/ld-lsb.so.3
+	   ;;
+	x86_64) 
+	   ln -sfv ../lib/ld-linux-x86-64.so.2 $LFS/lib
+	   ln -sfv ../lib/ld-linux-x86-64.so.2 $LFS/lib/ld-lsb-x86-64.so.3
+	   ;;
+	esac
+	```
