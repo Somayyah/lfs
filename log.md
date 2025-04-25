@@ -401,3 +401,18 @@ Divided into three stages:
 	make DESTDIR=$LFS install
 	rm -v $LFS/usr/lib/lib{stdc++{,exp,fs},supc++}.la
 	```
+	
+- Cross Compiling Temporary Tools
+
+	- M4-1.4.19
+	
+	```
+	tar -xf M4-1.4.19.tar.gz
+	cd M4-1.4.19
+	./configure --prefix=/usr \
+		--host=$LFS_TGT \
+		--build=$(build-aux/config.guess)
+	make
+	make DESTDIR=$LFS install
+	
+	```
