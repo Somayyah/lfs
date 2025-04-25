@@ -232,11 +232,14 @@ Divided into three stages:
 ### log 
 
 - Important notes for each package:
-	a. Using the tar program, extract the package to be built. In Chapter 5 and Chapter 6, ensure you are the lfs user when extracting the package. Do not use any method except the tar command to extract the source code. Notably, using the cp -R command to copy the source code tree somewhere else can destroy timestamps in the source tree, and cause the build to fail.
-	b. Change to the directory created when the package was extracted.
-	c. Follow the instructions for building the package.
-	d. Change back to the sources directory when the build is complete.
-	e. Delete the extracted source directory unless instructed otherwise.
+	a. Using the tar program, extract the package to be built. 
+	b. In Chapter 5 and Chapter 6, ensure you are the lfs user when extracting the package. 
+	c. Do not use any method except the tar command to extract the source code. 
+	d. Using the cp -R command to copy the source code tree somewhere else can destroy timestamps in the source tree, and cause the build to fail.
+	e. Change to the directory created when the package was extracted.
+	f. Follow the instructions for building the package.
+	g. Change back to the sources directory when the build is complete.
+	h. Delete the extracted source directory unless instructed otherwise.
 
 - Binutlis-pass1
 
@@ -299,3 +302,15 @@ Divided into three stages:
 	cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
 		`dirname $($LFS_TGT-gcc -print-libgcc-file-name)`/include/limits.h
 	```
+- Linux API headers
+	
+	```
+	tar -xf linux-6.10.5.tar.xz 
+	cd linux-6.10.5
+	make mrproper
+	make headers 
+	find usr/include -type f ! -name '*.h' -delete 
+	cp -rv usr/include $LFS/usr
+	```
+	
+	**I had to redo this step as I did the first commands as the original sudoer user not lfs, luckily I had the snapshot ready to revert back**
