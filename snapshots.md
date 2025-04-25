@@ -9,3 +9,5 @@
 - iii - gcc : Installed GCC, duh.
 
 - iii - Linux headers finished
+
+- iii - glibc-pass1
