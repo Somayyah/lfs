@@ -8,4 +8,4 @@
 
 - iii - gcc : Installed GCC, duh.
 
-
+- iii - Linux headers finished

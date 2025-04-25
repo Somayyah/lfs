@@ -329,8 +329,6 @@ Divided into three stages:
 			ln -sfv ../lib/ld-linux-x86-64.so.2 $LFS/lib64/ld-lsb-x86-64.so.3
 		;;
 	esac
-	
-	patch -Np1 -i ../glibc-2.40-fhs-1.patch
 	```
 	
 	But we have this note in part ii:
@@ -352,4 +350,36 @@ Divided into three stages:
 	   ln -sfv ../lib/ld-linux-x86-64.so.2 $LFS/lib/ld-lsb-x86-64.so.3
 	   ;;
 	esac
+	patch -Np1 -i ../../patches/glibc-2.40-fhs-1.patch
+	mkdir -v build & cd build
+	echo "rootsbindir=/usr/sbin" > configparms
+	../configure \
+		--prefix=/usr \
+		--host=$LFS_TGT \
+		--build=$(../scripts/config.guess) \
+		--enable-kernel=4.19 \
+		--with-headers=$LFS/usr/include \
+		--disable-nscd \
+		libc_cv_slibdir=/usr/lib
+	make
+	make DESTDIR=$LFS install
+	sed '/RTLDLIST=/s@/usr@@g' -i $LFS/usr/bin/ldd
+	```
+	
+	Let's perform sanity check:
+	
+	```
+	echo 'int main(){}' | $LFS_TGT-gcc -xc -
+	readelf -l a.out | grep ld-linux
+	```
+	
+	Expected output
+	
+	```
+	[Requesting program interpreter: /lib64/ld-linux-x86-64.so.2]
+	```
+	
+	Once all is well, clean up the test file:
+	```
+	rm -v a.out
 	```
