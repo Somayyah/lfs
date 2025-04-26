@@ -416,3 +416,10 @@ Divided into three stages:
 	make DESTDIR=$LFS install
 	
 	```
+	
+
+## 04-26-2025
+
+### log
+
+- I continued compiling hte rest of the packages from chapters 5 and 6, I had to restart after libstdc++ as I made the mistake of using the pre extracted tarbal from a previous compilation instead of unpacking a real one.
