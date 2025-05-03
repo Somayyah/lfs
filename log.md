@@ -428,4 +428,14 @@ Divided into three stages:
 
 ### log
 
-- CHROOT
+- Until Section 7.4, “Entering the Chroot Environment”, the commands must be run as root, with the LFS variable set.
+After entering chroot, all commands are run as root, fortunately without access to the OS of the computer you built
+LFS on. Be careful anyway, as it is easy to destroy the whole LFS system with bad commands.
+
+- 
+```
+chown --from lfs -R root:root $LFS/{usr,lib,var,etc,bin,sbin,tools}
+case $(uname -m) in
+x86_64) chown --from lfs -R root:root $LFS/lib64 ;;
+esac
+```
