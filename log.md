@@ -578,3 +578,15 @@ The lfs user permissions and privilages are configured this way:
 	sed '/RTLDLIST=/s@/usr@@g' -i $LFS/usr/bin/ldd
   ```
   
+  Now we finish the sanity check:
+  
+  ```
+	lfs:/mnt/lfs/sources/glibc-2.40/build$ echo 'int main(){}' | $LFS_TGT-gcc -xc -
+	lfs:/mnt/lfs/sources/glibc-2.40/build$ readelf -l a.out | grep ld-linux
+		  [Requesting program interpreter: /lib64/ld-linux-x86-64.so.2]
+	lfs:/mnt/lfs/sources/glibc-2.40/build$ rm -v a.out
+	removed 'a.out'
+	lfs:/mnt/lfs/sources/glibc-2.40/build$ 
+  ```
+  
+  I'll proceed even with /lib64 in the output.. hopefully I don't get humbled again. Moving on to the rest of the packages..
