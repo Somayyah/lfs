@@ -507,3 +507,6 @@ ln: failed to create symbolic link '/mnt/lfs/lib64/ld-lsb-x86-64.so.3': No such 
 lfs:/mnt/lfs/sources/glibc-2.40$ 
 
 ```
+
+I'm logged in as lfs so why is this happening? I already install the previous packages without issues and this has never happened prior to cloning the snapshot! Let's retrace:
+
