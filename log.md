@@ -474,4 +474,4 @@ TESTSUITEFLAGS="-j$(nproc)" \
 
 and it's not working...
 
-I cloned the snapshot **Linux Headers finished** to trace back my steps while keeping the latest snapshots, this way I can troubleshoot the issue while allowing myself to progress.
+I cloned the snapshot **Linux Headers finished** to trace back my steps while keeping the latest snapshots, this way I can troubleshoot the issue while allowing myself to progress. It's a storage eater though, hopefully I get to delete the snapshots for good after I chroot.
