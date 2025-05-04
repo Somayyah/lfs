@@ -15,3 +15,7 @@
 - iii - libstdc++
 
 - iii - Toolchain compilation finished
+
+- iii - Preparing the virtual Kernel SYSTEM
+
+- 
