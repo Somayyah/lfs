@@ -475,3 +475,35 @@ TESTSUITEFLAGS="-j$(nproc)" \
 and it's not working...
 
 I cloned the snapshot **Linux Headers finished** to trace back my steps while keeping the latest snapshots, this way I can troubleshoot the issue while allowing myself to progress. It's a storage eater though, hopefully I get to delete the snapshots for good after I chroot.
+
+#### Snapshot cloned at Linux Headers
+
+- glibc
+
+```
+case $(uname -m) in
+i?86) ln -sfv ld-linux.so.2 $LFS/lib/ld-lsb.so.3
+;;
+x86_64) ln -sfv ../lib/ld-linux-x86-64.so.2 $LFS/lib64
+ln -sfv ../lib/ld-linux-x86-64.so.2 $LFS/lib64/ld-lsb-x86-64.so.3
+;;
+esac
+```
+
+And immediately got permission denied:
+
+```
+lfs:/mnt/lfs/sources$ tar -xf glibc-2.40.tar.xz 
+lfs:/mnt/lfs/sources$ cd glibc-2.40
+lfs:/mnt/lfs/sources/glibc-2.40$ case $(uname -m) in
+i?86) ln -sfv ld-linux.so.2 $LFS/lib/ld-lsb.so.3
+;;
+x86_64) ln -sfv ../lib/ld-linux-x86-64.so.2 $LFS/lib64
+ln -sfv ../lib/ld-linux-x86-64.so.2 $LFS/lib64/ld-lsb-x86-64.so.3
+;;
+esac
+ln: failed to create symbolic link '/mnt/lfs/lib64': Permission denied
+ln: failed to create symbolic link '/mnt/lfs/lib64/ld-lsb-x86-64.so.3': No such file or directory
+lfs:/mnt/lfs/sources/glibc-2.40$ 
+
+```
