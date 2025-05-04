@@ -2,7 +2,7 @@
 
 > NEVER UPGRADE OR UPDATE THE BUILD SYSTEM!!! 
 
-```
+
 flowchart TD
     A["Preparation Finished (part ii complete)"]
     B["Binutils Pass 1 installed for initial cc build"]
@@ -17,5 +17,3 @@ flowchart TD
 
     A --> B --> C --> D --> E --> F --> G --> H
     D --> D2
-
-```
