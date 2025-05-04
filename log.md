@@ -590,3 +590,9 @@ The lfs user permissions and privilages are configured this way:
   ```
   
   I'll proceed even with /lib64 in the output.. hopefully I don't get humbled again. Moving on to the rest of the packages..
+  
+## 05-05-2025
+
+### log
+
+- I failed again.. need to check further. Why what's going on...
