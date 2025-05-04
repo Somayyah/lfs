@@ -511,14 +511,14 @@ lfs:/mnt/lfs/sources/glibc-2.40$
 I'm logged in as lfs so why is this happening? I already install the previous packages without issues and this has never happened prior to cloning the snapshot! Let's retrace:
 
 Important notes for each package:
-	a. Using the tar program, extract the package to be built ==> ✅
-	b. In Chapter 5 and Chapter 6, ensure you are the lfs user when extracting the package. ==> ✅ I'm on chapter 5, since I get permission denied maybe I need to reconfigure the user's permissions
-	c. Do not use any method except the tar command to extract the source code. ==> ✅ 
-	d. Using the cp -R command to copy the source code tree somewhere else can destroy timestamps in the source tree, and cause the build to fail. ==> ✅ 
-	e. Change to the directory created when the package was extracted. ==> ✅ 
-	f. Follow the instructions for building the package. ==> ✅ 
-	g. Change back to the sources directory when the build is complete. ==> ✅ 
-	h. Delete the extracted source directory unless instructed otherwise. ==> ✅ 
+	- Using the tar program, extract the package to be built ==> ✅
+	- In Chapter 5 and Chapter 6, ensure you are the lfs user when extracting the package. ==> ✅ I'm on chapter 5, since I get permission denied maybe I need to reconfigure the user's permissions
+	- Do not use any method except the tar command to extract the source code. ==> ✅ 
+	- Using the cp -R command to copy the source code tree somewhere else can destroy timestamps in the source tree, and cause the build to fail. ==> ✅ 
+	- Change to the directory created when the package was extracted. ==> ✅ 
+	- Follow the instructions for building the package. ==> ✅ 
+	- Change back to the sources directory when the build is complete. ==> ✅ 
+	- Delete the extracted source directory unless instructed otherwise. ==> ✅ 
 	
 The lfs user permissions and privilages are configured this way:
 
