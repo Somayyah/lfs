@@ -473,3 +473,5 @@ TESTSUITEFLAGS="-j$(nproc)" \
 ```
 
 and it's not working...
+
+I cloned the snapshot **Linux Headers finished** to trace back my steps while keeping the latest snapshots, this way I can troubleshoot the issue while allowing myself to progress.
