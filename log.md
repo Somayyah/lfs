@@ -536,5 +536,44 @@ The lfs user permissions and privilages are configured this way:
   
   will redo and try again, let's see..
   
-  Same error.. But wait, I remember from the previous attempt that $LFS/lib64 shouldn't exist, and I remember that I created other symlinks. So is this behavior expected? if yes, does that mean my attempt at pointing the symlinks to $LFS/lib instead of $LFS/lib64 was the reason for chroot failure? The plot thickens... How to approach further hmmm....
+  Same error.. But wait, I remember from the previous attempt that $LFS/lib64 shouldn't exist:
+
+	> The LFS editors have deliberately decided not to use a /usr/lib64 directory. Several steps are taken to be
+	> sure the toolchain will not use it. If for any reason this directory appears (either because you made an error
+	> in following the instructions, or because you installed a binary package that created it after finishing LFS), 
+	> it may break your system. You should always be sure this directory does not exist.
+
+  and I remember that I created other symlinks. So is this behavior expected? if yes, does that mean my attempt at pointing the symlinks to $LFS/lib instead of $LFS/lib64 was the reason for chroot failure? The plot thickens... How to approach further hmmm....
+  
+  I decided to just proceed without creating the symlinks as below:
+  
+  ```
+  	case $(uname -m) in
+	i?86) 
+	   ln -sfv ld-linux.so.2 $LFS/lib/ld-lsb.so.3
+	   ;;
+	x86_64) 
+	   ln -sfv ../lib/ld-linux-x86-64.so.2 $LFS/lib
+	   ln -sfv ../lib/ld-linux-x86-64.so.2 $LFS/lib/ld-lsb-x86-64.so.3
+	   ;;
+	esac
+  ```
+  worse case scenario is I'll go a previous snapshot. Let's continue:
+  
+  ```
+  	patch -Np1 -i ../../patches/glibc-2.40-fhs-1.patch
+	mkdir -v build & cd build
+	echo "rootsbindir=/usr/sbin" > configparms
+	../configure \
+		--prefix=/usr \
+		--host=$LFS_TGT \
+		--build=$(../scripts/config.guess) \
+		--enable-kernel=4.19 \
+		--with-headers=$LFS/usr/include \
+		--disable-nscd \
+		libc_cv_slibdir=/usr/lib
+	make
+	make DESTDIR=$LFS install
+	sed '/RTLDLIST=/s@/usr@@g' -i $LFS/usr/bin/ldd
+  ```
   
