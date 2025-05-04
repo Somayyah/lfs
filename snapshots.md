@@ -2,20 +2,21 @@
 
 > NEVER UPGRADE OR UPDATE THE BUILD SYSTEM!!! 
 
-- Preperation-finished : To mark part ii completion. 
+```
+graph TD
 
-- iii - binutils-pass1 : Installed binutils-pass1 successfully for the initial cc build, next is gcc.
+A[Preparation Finished<br/>(part ii complete)]
+B[Binutils Pass 1<br/>installed for initial cc build]
+C[GCC Pass 1<br/>installed]
+D[Linux Headers<br/>finished]
+E[Glibc Pass 1]
+F[libstdc++]
+G[Toolchain Compilation<br/>finished]
+H[Preparing Virtual<br/>Kernel System]
 
-- iii - gcc : Installed GCC, duh.
+D2[Snapshot cloned<br/>at Linux Headers]
 
-- iii - Linux headers finished
 
-- iii - glibc-pass1
-
-- iii - libstdc++
-
-- iii - Toolchain compilation finished
-
-- iii - Preparing the virtual Kernel SYSTEM
-
-- 
+A --> B --> C --> D --> E --> F --> G --> H
+D --> D2
+```
