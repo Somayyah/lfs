@@ -596,3 +596,40 @@ The lfs user permissions and privilages are configured this way:
 ### log
 
 - I failed again.. need to check further. Why what's going on...
+
+```
+-bash-5.2# file /usr/bin/env
+/usr/bin/env: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=bf98920296e7b490882f624f8c16424819dcf4a9, for GNU/Linux 3.2.0, stripped
+-bash-5.2# file $LFS/usr/bin/env
+/mnt/lfs/usr/bin/env: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 4.19.0, with debug_info, not stripped
+-bash-5.2# ls -l $lfs/lib64/ld-linux-x86-64.so.2
+lrwxrwxrwx 1 root root 44 Jan 28 20:07 /lib64/ld-linux-x86-64.so.2 -> ../lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+-bash-5.2# 
+```
+
+$LFS/usr/bin/env uses the interpretter /lib64/ld-linux-x86-64.so.2, which is a symlinkt to ../lib/x86_64-linux-gnu/ld-linux-x86-64.so.2, when I try to view it:
+
+```
+-bash-5.2# ls $LFS/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+ls: cannot access '/mnt/lfs/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2': No such file or directory
+-bash-5.2# 
+-bash-5.2# find $LFS -name 'ld-linux-x86-64.so.2'
+/mnt/lfs/usr/lib/ld-linux-x86-64.so.2
+-bash-5.2# 
+```
+
+It exists in $LFS/usr/lib so will update the symlink and see how it goes:
+
+```
+rm $LFS/lib64/ld-linux-x86-64.so.2
+ln -sv ../usr/lib/ld-linux-x86-64.so.2 $LFS/lib64/ld-linux-x86-64.so.2
+```
+
+and it failed:
+
+```
+-bash-5.2# ln -sv ../usr/lib/ld-linux-x86-64.so.2 $LFS/lib64/ld-linux-x86-64.so.2
+ln: failed to create symbolic link '/mnt/lfs/lib64/ld-linux-x86-64.so.2': No such file or directory
+-bash-5.2# 
+
+```
