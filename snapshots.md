@@ -14,7 +14,9 @@ flowchart TD;
     H["Preparing Virtual Kernel System"]
 
     D2["gcc-phase2 make done"]
-	C2[gcc compiled]
+	E2["gcc compiled"]
+	F2["into chroot"]
+	
     A --> B --> C --> D --> E --> F --> G --> H;
-    D --> D2 --> C2;
+    D --> D2 --> E2 --> F2;
 ```
