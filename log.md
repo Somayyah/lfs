@@ -641,10 +641,35 @@ mkdir -pv $LFS/lib64
 ln -sv ../usr/lib/ld-linux-x86-64.so.2 $LFS/lib64/ld-linux-x86-64.so.2
 ```
 
-Now we get a new error:
+Now we get a new error so that's a good sign:
 
 ```
 -bash-5.2# chroot "$LFS" /usr/bin/env -i HOME=/root TERM="$TERM" PS1='(lfs chroot) \u:\w\$ ' PATH=/usr/bin:/usr/sbin MAKEFLAGS="-j$(nproc)" TESTSUITEFLAGS="-j$(nproc)" /bin/bash --login
 /usr/bin/env: '/bin/bash': No such file or directory
 -bash-5.2# 
+```
+
+so let's make a new Symlink:
+
+```
+ln -sv /usr/bin/bash $LFS/bin/bash
+```
+
+or wait I have a bash installed in LFS:
+
+```
+-bash-5.2# find $LFS -name 'bash'
+/mnt/lfs/usr/lib/bash
+/mnt/lfs/usr/include/bash
+/mnt/lfs/usr/share/doc/bash
+/mnt/lfs/usr/bin/bash
+-bash-5.2# 
+```
+
+So will try to run ```chroot "$LFS" /usr/bin/env -i HOME=/root TERM="$TERM" PS1='(lfs chroot) \u:\w\$ ' PATH=/usr/bin:/usr/sbin MAKEFLAGS="-j$(nproc)" TESTSUITEFLAGS="-j$(nproc)" /usr/bin/bash --login```
+
+Tada!! Since we don't have /etc/shadow yet it's expected for the prompt to be like this:
+
+```
+(lfs chroot) I have no name!:/#
 ```
