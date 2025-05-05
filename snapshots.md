@@ -2,8 +2,8 @@
 
 > NEVER UPGRADE OR UPDATE THE BUILD SYSTEM!!! 
 
-```
-flowchart TD
+```mermaid
+flowchart TD;
     A["Preparation Finished (part ii complete)"]
     B["Binutils Pass 1 installed for initial cc build"]
     C["GCC Pass 1 installed"]
@@ -13,8 +13,8 @@ flowchart TD
     G["Toolchain Compilation finished"]
     H["Preparing Virtual Kernel System"]
 
-    D2["Snapshot cloned at Linux Headers"]
-
-    A --> B --> C --> D --> E --> F --> G --> H
-    D --> D2
+    D2["gcc-phase2 make done"]
+	C2[gcc compiled]
+    A --> B --> C --> D --> E --> F --> G --> H;
+    D --> D2 --> C2;
 ```
