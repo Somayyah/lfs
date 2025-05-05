@@ -633,3 +633,18 @@ ln: failed to create symbolic link '/mnt/lfs/lib64/ld-linux-x86-64.so.2': No suc
 -bash-5.2# 
 
 ```
+
+What if I just...create the /lib64 directory? what's the worse that could happen? I can go back and recompile again but for now I need some progress >:(
+
+```
+mkdir -pv $LFS/lib64
+ln -sv ../usr/lib/ld-linux-x86-64.so.2 $LFS/lib64/ld-linux-x86-64.so.2
+```
+
+Now we get a new error:
+
+```
+-bash-5.2# chroot "$LFS" /usr/bin/env -i HOME=/root TERM="$TERM" PS1='(lfs chroot) \u:\w\$ ' PATH=/usr/bin:/usr/sbin MAKEFLAGS="-j$(nproc)" TESTSUITEFLAGS="-j$(nproc)" /bin/bash --login
+/usr/bin/env: '/bin/bash': No such file or directory
+-bash-5.2# 
+```
