@@ -846,3 +846,4 @@ hi
 
 and now make runs without issues.
 
+**PART III FINISHED, INTO PART IV - BUILDING THE LFS SYSTEM**
