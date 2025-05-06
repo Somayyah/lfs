@@ -809,4 +809,40 @@ cp -v /usr/bin/bash /bin/
 ln -svf bash /bin/sh
 ```
 
-now configure runs fine.
+now configure runs fine. with make I get this:
+
+```
+gcc -DHAVE_CONFIG_H -I. -I..  -I. -I. -I.. -I.. -Iglib -DIN_LIBTEXTSTYLE -DLIBXML_STATIC    -I./libcroco  -DDEPENDS_ON_LIBICONV=1   -g -O2 -w -fno-analyzer -c gl_array_list.c
+/bin/sh: line 25: sh: command not found
+gcc -DHAVE_CONFIG_H -I. -I..  -I. -I. -I.. -I.. -Iglib -DIN_LIBTEXTSTYLE -DLIBXML_STATIC    -I./libcroco  -DDEPENDS_ON_LIBICONV=1   -g -O2 -w -fno-analyzer -c basename-lgpl.c
+/bin/sh: line 25: sh: command not found
+gcc -DHAVE_CONFIG_H -I. -I..  -I. -I. -I.. -I.. -Iglib -DIN_LIBTEXTSTYLE -DLIBXML_STATIC    -I./libcroco  -DDEPENDS_ON_LIBICONV=1   -g -O2 -w -fno-analyzer -c binary-io.c
+/bin/sh: line 25: sh: command not found
+gcc -DHAVE_CONFIG_H -I. -I..  -I. -I. -I.. -I.. -Iglib -DIN_LIBTEXTSTYLE -DLIBXML_STATIC    -I./libcroco  -DDEPENDS_ON_LIBICONV=1   -g -O2 -w -fno-analyzer -c c-ctype.c
+/bin/sh: line 25: sh: command not found
+```
+
+because the shell cannot find the sh command even when it exists in /bin:
+
+```
+(lfs chroot) root:/sources/gettext-0.22.5# sh -c "echo hello"
+sh: sh: command not found
+(lfs chroot) root:/sources/gettext-0.22.5# echo $PATH
+/usr/bin:/usr/sbin
+(lfs chroot) root:/sources/gettext-0.22.5# /bin/sh -c "echo hi"
+hi
+(lfs chroot) root:/sources/gettext-0.22.5# 
+```
+
+This means the issue is because the PATH variable isn't updated, after updating it the issue went away:
+
+```
+(lfs chroot) root:/sources/gettext-0.22.5# echo $PATH
+/usr/bin:/usr/sbin
+(lfs chroot) root:/sources/gettext-0.22.5# export PATH=/bin:$PATH
+(lfs chroot) root:/sources/bison-3.8.2# sh -c "echo hi"
+hi
+```
+
+and now make runs without issues.
+

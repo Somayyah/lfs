@@ -22,6 +22,12 @@ export _=/usr/bin/env
 export DESTDIR=
 export CC_FOR_TARGET=$LFS_TGT-gcc
 
+## In chroot
+
+export CONFIG_SHELL=/bin/bash
+export SHELL=/bin/bash
+export PATH=/bin:$PATH
+
 # Notable locations
 
 - $LFS/tools : To install the cross compiler.
