@@ -16,7 +16,8 @@ flowchart TD;
     D2["gcc-phase2 make done"]
 	E2["gcc compiled"]
 	F2["into chroot"]
+	G2["iii - 7.13.1 - Cleaning"]
 	
     A --> B --> C --> D --> E --> F --> G --> H;
-    D --> D2 --> E2 --> F2;
+    D --> D2 --> E2 --> F2 --> G2;
 ```
