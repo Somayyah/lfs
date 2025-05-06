@@ -755,3 +755,58 @@ users:x:999:
 nogroup:x:65534:
 EOF
 ```
+
+## 05-06-2025
+
+### log
+
+- gettext
+
+```
+tar -xvf Gettext-0.22.5.tar.gz
+
+cd gettext-0.22.5
+
+./configure --disable-shared
+
+```
+
+configuration fails, reason is configure file doesn't exist:
+
+```
+"gettext" "bash: ./configure: cannot execute: required file not found"
+```
+
+Yet the file exists and is an excutable:
+
+```
+ls -l configure
+-rwxrwxr-x 1 root root 139265 Apr 06  2025 configure
+```
+
+and it has the correct shebang:
+
+```
+head -n 1 configure
+#! /bin/sh
+```
+
+/bin/sh exists but it has a broken link:
+
+```
+(lfs chroot) root:/sources/gettext-0.22.5# ls -l /bin/sh
+lrwxrwxrwx 1 root root 4 May  6 07:48 /bin/sh -> bash
+(lfs chroot) root:/sources/gettext-0.22.5# 
+
+file /bin/sh
+/bin/sh: broken symbolic link to bash
+```
+
+since I know that /usr/bin/bash exists I did below:
+
+```
+cp -v /usr/bin/bash /bin/
+ln -svf bash /bin/sh
+```
+
+now configure runs fine.
