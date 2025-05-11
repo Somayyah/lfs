@@ -17,7 +17,8 @@ flowchart TD;
 	E2["gcc compiled"]
 	F2["into chroot"]
 	G2["iii - 7.13.1 - Cleaning"]
+	H2["IV - Into Glibc"]
 	
     A --> B --> C --> D --> E --> F --> G --> H;
-    D --> D2 --> E2 --> F2 --> G2;
+    D --> D2 --> E2 --> F2 --> G2 --> H2;
 ```
