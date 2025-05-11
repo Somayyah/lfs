@@ -23,9 +23,12 @@ flowchart TD;
 	K2["IV - Into expect5"]
 	L2["IV - Into binutils"]
 	M2["IV - Into GMP"]
-	
+	N2["IV - Into ACL"]
+	O2["IV - Into GCC"]
+	P2["IV - Into gcc - tar"]
+
 	
 	
     A --> B --> C --> D --> E --> F --> G --> H;
-    D --> D2 --> E2 --> F2 --> G2 --> H2 --> I2 --> J2 --> K2 --> L2 --> M2;
+    D --> D2 --> E2 --> F2 --> G2 --> H2 --> I2 --> J2 --> K2 --> L2 --> M2 --> N2 --> O2 --> P2;
 ```
