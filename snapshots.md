@@ -20,7 +20,12 @@ flowchart TD;
 	H2["IV - Into Glibc"]
 	I2["IV - Into Glibc done"]
 	J2["IV - Into bc"]
+	K2["IV - Into expect5"]
+	L2["IV - Into binutils"]
+	M2["IV - Into GMP"]
+	
+	
 	
     A --> B --> C --> D --> E --> F --> G --> H;
-    D --> D2 --> E2 --> F2 --> G2 --> H2 --> I2 --> J2;
+    D --> D2 --> E2 --> F2 --> G2 --> H2 --> I2 --> J2 --> K2 --> L2 --> M2;
 ```

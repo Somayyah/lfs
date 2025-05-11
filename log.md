@@ -847,3 +847,22 @@ hi
 and now make runs without issues.
 
 **PART III FINISHED, INTO PART IV - BUILDING THE LFS SYSTEM**
+
+## 05-11-2025
+
+### log
+
+- While compiling binutils, I encountered 125 failures after running ```make -k check``` which seems a lot. However as per the book:
+
+```
+Twelve tests fail in the gold test suite when the --enable-default-pie and --enable-default-ssp options are passed
+to GCC.
+```
+
+Since we already have 12 failures then we are safe...
+
+```
+(lfs chroot) root:/sources/binutils-2.43.1/build# grep '^FAIL:' $(find -name '*.log') | grep gold | wc
+     12      24     635
+(lfs chroot) root:/sources/binutils-2.43.1/build# 
+```
