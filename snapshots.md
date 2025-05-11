@@ -18,7 +18,9 @@ flowchart TD;
 	F2["into chroot"]
 	G2["iii - 7.13.1 - Cleaning"]
 	H2["IV - Into Glibc"]
+	I2["IV - Into Glibc done"]
+	J2["IV - Into bc"]
 	
     A --> B --> C --> D --> E --> F --> G --> H;
-    D --> D2 --> E2 --> F2 --> G2 --> H2;
+    D --> D2 --> E2 --> F2 --> G2 --> H2 --> I2 --> J2;
 ```
