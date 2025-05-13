@@ -866,3 +866,9 @@ Since we already have 12 failures then we are safe...
      12      24     635
 (lfs chroot) root:/sources/binutils-2.43.1/build# 
 ```
+
+## 05-13-2025
+
+### Log
+
+- For the expat package in the book the download link is for the version 2.6.2.tar.xz but in the instructions its 2.6.4.

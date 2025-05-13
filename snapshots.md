@@ -28,7 +28,6 @@ flowchart TD;
 	P2["IV - Into gcc - tar"]
 
 	
-	
     A --> B --> C --> D --> E --> F --> G --> H;
     D --> D2 --> E2 --> F2 --> G2 --> H2 --> I2 --> J2 --> K2 --> L2 --> M2 --> N2 --> O2 --> P2;
 ```
