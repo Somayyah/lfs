@@ -26,8 +26,10 @@ flowchart TD;
 	N2["IV - Into ACL"]
 	O2["IV - Into GCC"]
 	P2["IV - Into gcc - tar"]
-
+	Q2["IV - Finished GCC into ncurses"]
+	R2["IV - Into psmisc"]
+	S2["IV - Into grep"]
 	
     A --> B --> C --> D --> E --> F --> G --> H;
-    D --> D2 --> E2 --> F2 --> G2 --> H2 --> I2 --> J2 --> K2 --> L2 --> M2 --> N2 --> O2 --> P2;
+    D --> D2 --> E2 --> F2 --> G2 --> H2 --> I2 --> J2 --> K2 --> L2 --> M2 --> N2 --> O2 --> P2 --> Q2 --> R2 --> S2;
 ```
