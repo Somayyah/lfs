@@ -872,3 +872,10 @@ Since we already have 12 failures then we are safe...
 ### Log
 
 - For the expat package in the book the download link is for the version 2.6.2.tar.xz but in the instructions its 2.6.4.
+
+## 05-14-2025
+
+### Log
+
+- Finally Chapter 8 is done, onto Chapter 9.
+
