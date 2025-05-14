@@ -27,8 +27,6 @@ export CC_FOR_TARGET=$LFS_TGT-gcc
 export CONFIG_SHELL=/bin/bash
 export SHELL=/bin/bash
 export PATH=/bin:$PATH
-export BUILD_ZLIB=False
-export BUILD_BZIP2=0
 
 # Notable locations
 
