@@ -28,11 +28,12 @@ export CONFIG_SHELL=/bin/bash
 export SHELL=/bin/bash
 export PATH=/bin:$PATH
 
-# Notable locations
+# Notable locations and files
 
 - $LFS/tools : To install the cross compiler.
 - $LFS/tools/bin : To install the binutils assembler and linker.
 - $LFS/tools/$LFS_TGT/bin : To install the binutils assembler and linker.
+- /etc/inittab : To control the init program which is important in the boot process in SystemV
 
 # Important commands
 
