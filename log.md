@@ -879,3 +879,23 @@ Since we already have 12 failures then we are safe...
 
 - Finally Chapter 8 is done, onto Chapter 9.
 
+## 05-15-2025
+
+### Log
+
+- SystemV is the classic Unix boot system. It uses ```Init``` to set basic processes like login via getty. It runs a script usually called rc which controls other scripts to initialize the system. ```init``` program is controlled by /etc/inittab, it controls the boot levels and can be edited:
+
+```
+0 — halt
+1 — Single user mode
+2 — User definable
+3 — Full multiuser mode
+4 — User definable
+5 — Full multiuser mode with display manager 
+6 — reboot
+```
+
+3 & 5 are default run levels.
+
+- Device handling:
+	Linux systems usually follow static device creation method.
