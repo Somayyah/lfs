@@ -904,6 +904,11 @@ With **UDEV**, device nodes are only created after being detected by the kernel 
 
 Device nodes don't require much space in the memory.
 
+- devfs was deprecated due to issues like race condition issues. Then comes sysfs.
 
+- Udev implementation:
+	- sysfs: Drivers that have been compiled into the kernel register their object in sysfs (devtmpfs) internally while being detected by the kernel. Drivers that are compiled as modules get regitered once loaded. Drivers data becomes available once sysfs is mounted onto /sys, now the drivers are available to the userspace and udevd for processing.
+	
+	
 	
 	
