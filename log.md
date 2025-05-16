@@ -932,4 +932,7 @@ Device nodes don't require much space in the memory.
 		- udev modifies /dev entries: applies names, symlinks, permissions, and handles hotplugged devices (like USB).
 
 	- Module loading:
-		- 
+		- Device appears → kernel posts modalias → udev sees MODALIAS → runs modprobe → module(s) with matching alias get loaded.
+		- Sometimes multiple drivers get loaded, so how do we load the correct one?
+		
+		
