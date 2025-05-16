@@ -933,6 +933,13 @@ Device nodes don't require much space in the memory.
 
 	- Module loading:
 		- Device appears → kernel posts modalias → udev sees MODALIAS → runs modprobe → module(s) with matching alias get loaded.
-		- Sometimes multiple drivers get loaded, so how do we load the correct one?
+		- Potential problems:
+			- A Kernel Module Is Not Loaded Automatically
+			- A Kernel Module Is Not Loaded Automatically, and Udev Is Not Intended to Load It
+			- Udev Loads Some Unwanted Module
+			- Udev Creates a Device Incorrectly, or Makes the Wrong Symlink
+			- Udev Rule Works Unreliably
+			- Udev Does Not Create a Device
+			- Device Naming Order Changes Randomly After Rebooting
 		
 		
