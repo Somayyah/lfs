@@ -897,6 +897,10 @@ Since we already have 12 failures then we are safe...
 
 3 & 5 are default run levels.
 
+## 05-16-2025
+
+### Log
+
 - There are two methods for device handling in Linux:
 
 **Static device creation** were thousands of device nodes are created even if they don't exist. This is done via **MAKEDEV** script, it calls for **mknod** program with relevant major / minor numbers of all devices that exist.
@@ -926,3 +930,6 @@ Device nodes don't require much space in the memory.
 		- Kernel mounts devtmpfs on /dev and creates basic device nodes there.
 		- Once userspace starts, udevd begins listening to device events.
 		- udev modifies /dev entries: applies names, symlinks, permissions, and handles hotplugged devices (like USB).
+
+	- Module loading:
+		- 
