@@ -34,6 +34,7 @@ export PATH=/bin:$PATH
 - $LFS/tools/bin : To install the binutils assembler and linker.
 - $LFS/tools/$LFS_TGT/bin : To install the binutils assembler and linker.
 - /etc/inittab : To control the init program which is important in the boot process in SystemV
+- /etc/udev/rules.d, /usr/lib/udev/rules.d, /run/udev/rules.d : contain udev rules that define how udev processes device events (uevents), including setting device permissions, ownership, names, and creating symlinks.
 
 # Important commands
 
