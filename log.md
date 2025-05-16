@@ -904,11 +904,20 @@ With **UDEV**, device nodes are only created after being detected by the kernel 
 
 Device nodes don't require much space in the memory.
 
-- devfs was deprecated due to issues like race condition issues. Then comes sysfs.
+- devfs (RIP) was deprecated due to issues like race condition issues. Then comes sysfs.
 
 - Udev implementation:
 	- sysfs: Drivers that have been compiled into the kernel register their object in sysfs (devtmpfs) internally while being detected by the kernel. Drivers that are compiled as modules get regitered once loaded. Drivers data becomes available once sysfs is mounted onto /sys, now the drivers are available to the userspace and udevd for processing.
 	
+	- devtmpfs: Used for the device files which are created by the kernel upon boot. Any driver that wishes to register a device node can use devtmpfs via driver core to do it. devtmpfs is mounted on /dev then the device node is exposed to the userspace with a fixed set of permissions.
 	
+	- /sys is a view into the kernel’s internal object tree, /dev is where the actual device files (nodes) live, udevd watches /sys, reacts to kernel events, and manages /dev accordingly. devtmpfs gives you basic /dev nodes early during boot. udev builds on that, adds logic, symlinks, permissions .. etc.
 	
+	- udev listens to kernel events monitoring for new or removed devices, reads from /sys to understand the layout, creates and modifies nodes in the /dev and updates permissions, symlinks ... etc.
 	
+	- What happens when USB is plugged?
+	
+		- Hardware gets plugged and detected by the Kernel.
+		- Kernel sends event and catched by udevd then looks into /sys to get information like vendor,type .. etc
+		- udevd then creates a new node in /dev for this device and sets permissions.
+		
