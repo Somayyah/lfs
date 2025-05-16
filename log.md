@@ -900,7 +900,7 @@ Since we already have 12 failures then we are safe...
 - There are two methods for device handling in Linux:
 
 **Static device creation** were thousands of device nodes are created even if they don't exist. This is done via **MAKEDEV** script, it calls for **mknod** program with relevant major / minor numbers of all devices that exist.
-With **UDEV**, device nodes are only created after being detected by the kernel boot time, and updates them into **devtmpfs** file system which is a virtual file system lives entirely in system memory. 
+With **UDEV**, device nodes are only created after being detected by the kernel boot time. 
 
 Device nodes don't require much space in the memory.
 
