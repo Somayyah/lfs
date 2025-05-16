@@ -900,7 +900,7 @@ Since we already have 12 failures then we are safe...
 - There are two methods for device handling in Linux:
 
 **Static device creation** were thousands of device nodes are created even if they don't exist. This is done via **MAKEDEV** script, it calls for **mknod** program with relevant major / minor numbers of all devices that exist.
-With **UDEV**, device nodes are only created after being detected by the kernel boot time. 
+With **UDEV**, device nodes are managed dynamically. During early boot, the kernel creates basic nodes in /dev using devtmpfs Later, udevd starts in userspace to and remove or edit those nodes with names, permissions, and symlinks.
 
 Device nodes don't require much space in the memory.
 
@@ -911,7 +911,7 @@ Device nodes don't require much space in the memory.
 	
 	- devtmpfs: Used for the device files which are created by the kernel upon boot. Any driver that wishes to register a device node can use devtmpfs via driver core to do it. devtmpfs is mounted on /dev then the device node is exposed to the userspace with a fixed set of permissions.
 	
-	- /sys is a view into the kernel’s internal object tree, /dev is where the actual device files (nodes) live, udevd watches /sys, reacts to kernel events, and manages /dev accordingly. devtmpfs gives you basic /dev nodes early during boot. udev builds on that, adds logic, symlinks, permissions .. etc.
+	- /sys is a view into the kernel’s internal object tree, /dev is where the actual device files (nodes) live, udevd listens to kernel uevents via netlink, uses /sys to read device metadata, and updates /dev accordingly. devtmpfs gives you basic /dev nodes early during boot. udev builds on that, adds logic, symlinks, permissions .. etc.
 	
 	- udev listens to kernel events monitoring for new or removed devices, reads from /sys to understand the layout, creates and modifies nodes in the /dev and updates permissions, symlinks ... etc.
 	
