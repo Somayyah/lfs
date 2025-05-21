@@ -1023,3 +1023,12 @@ passwd -d root
 ```
 
 I'll add it later.
+
+**LFS complete**
+
+## Next steps
+
+– Automate kernel boot via GRUB config
+– Set secure root password
+– Begin BLFS to expand the system
+
