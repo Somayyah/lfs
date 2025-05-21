@@ -947,3 +947,79 @@ Device nodes don't require much space in the memory.
 ### Log
 
 **Compiling the kernel** : No customization instead I'll follow the book exactly as it is.
+
+**Finally finished LFS** and now it's time to reboot, and it's not working:
+
+```
+Booting 'GNU/Linux, Linux 6.10.5-lfs-12.2'
+
+error: file '/boot/vmlinuz-6.10.5-lfs-12.2' not found.
+Press any key to continue...
+
+Failed to boot both default and fallback entries.
+Press any key to continue...
+```
+
+We go back to the boot menu and enter c to enter the grub cli and hunt the boot directory:
+
+```
+grub> ls
+grub> (hd0,gpt3) (hd0.gpt2) (hd0.gpt1)
+grub> ls (hd0)/
+error: unknown filesystem.
+grub> ls (hd0,gpt3)/
+lost+found/ home/ root/ boot/ opt/ tmp/ sources/ patches/ bin/ usr/ var/ lib/ e
+tc/ sbin/ dev/ proc/ sys/ run/ lib64/ mnt/ srv/ media/
+grub> ls (hd0,gpt2)/
+lost+found/ bin lib lib64 bin.user-is-merged boot cdrom/ dev/ etc/ home/
+lib.user.is-merged media/ mnt/ opt/ proc/ root/ run/ sbin/ usr.user-is-merged/ snap/
+srv/ sys/ tmp/ usr/ var/ swap.img
+grub> ls (hd0,gpt3)/boot/
+efi/ vmlinuz-6.10.5-lfs-12.2 System.map-6.10.5 config-6.10.5 grub/
+grub>
+```
+
+There it is, I searched the internet and found below commands which enables us to manually boot into vmlinuz-6.10.5-lfs-12.2:
+
+```
+set root=(hd0,gpt3)
+linux /boot/vmlinuz-6.10.5-lfs-12.2 root=/dev/sda3 ro
+boot
+```
+
+and now it's working!!!
+
+```
+<lfs> login: 
+```
+
+Login into root isn't working which is weird, instead of going into a previous snapshot and reset the password which I'm sure I did I'll try again but add /bin/bash as the login shell:
+
+```
+set root=(hd0,gpt3)
+linux /boot/vmlinuz-6.10.5-lfs-12.2 root=/dev/sda3 ro init=/bin/bash
+boot
+```
+
+then set the password again with ```passwd``` but it didn't work:
+
+```
+bash-5.2# passwd root
+Changing password for root
+Enter the new password (minimum of 5 characters)
+Please use a combination of upper and lower case letters and numbers.
+The password for root is unchanged.
+bash-5.2# passwd
+Enter the new password (minimum of 5 characters)
+Please use a combination of upper and lower case letters and numbers.
+The password for root is unchanged.
+bash-5.2# passwd
+```
+
+I tried booting without the ``ro`` option but with no luck. then I tried from bash to just delete it:
+
+```
+passwd -d root
+```
+
+I'll add it later.
