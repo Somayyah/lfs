@@ -941,5 +941,9 @@ Device nodes don't require much space in the memory.
 			- Udev Rule Works Unreliably
 			- Udev Does Not Create a Device
 			- Device Naming Order Changes Randomly After Rebooting
-		
-		
+			
+## 05-21-2025
+
+### Log
+
+**Compiling the kernel** : No customization instead I'll follow the book exactly as it is.
