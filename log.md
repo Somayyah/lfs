@@ -1032,3 +1032,44 @@ I'll add it later.
 – Set secure root password
 – Begin BLFS to expand the system
 
+---
+
+## Fixing the password issue
+
+I can't log into the OS without using ```init=/bin/bash```, the below output shows the account without a password so why can't I still log in?
+
+```
+bash-5.2# passwd -S
+root NP 2026-05-11 0 99999 7 -1
+bash-5.2#
+```
+
+I tried to use the soft keyboard in VBOX but with no luck. I feel like this has to do with the keyboard, tty but not sure. I checked the grub.cfg under /dev/sda3 which is the partition for LFS and I sense there's some misconfiguration:
+
+```
+# Begin /boot/grub/grub.cfg
+set default=0
+set timeout=5
+insmod part_gpt
+insmod ext2
+set root=(hd0,2)
+menuentry "GNU/Linux, Linux 6.10.5-lfs-12.2" {
+    linux /boot/vmlinuz-6.10.5-lfs-12.2 root=/dev/sda2 ro
+}
+```
+
+It should be root=/dev/sda3 not /dev/sda2. Let's boot again with the bash shell and fix it, let's see:
+
+```
+set root=(hd0,gpt3)
+linux /boot/vmlinuz-6.10.5-lfs-12.2 root=/dev/sda3 ro init=/bin/bash
+boot
+```
+
+Not sure if it will fix the root login issue but it feels wrong to be like this. Vim is installed on the LFS system so this is good but I cound't edit the grub.cfg file becuase it's in read only mode, so I entered the command:
+
+```
+mount -o remount,rw /
+```
+
+then the editing was successful. Now let's try again.. **It didn't work**
