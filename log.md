@@ -1028,7 +1028,7 @@ I'll add it later.
 
 ## Next steps
 
-– Automate kernel boot via GRUB config
+– ✅ Automate kernel boot via GRUB config
 – Set secure root password
 – Begin BLFS to expand the system
 
@@ -1088,4 +1088,10 @@ menuentry "GNU/Linux, Linux 6.10.5-lfs-12.2" {
 
 I know for a fact that LFS lives in (hd0,gpt3), will try to edit it again, let's see.
 
-Alright so the boot issue is now fixed, I no longer have to manually boot via the grub CLI but the root password isn't fixed yet.
+Alright so the boot issue is now fixed, I no longer have to manually boot via the grub CLI but the root password isn't fixed yet. Let's try to set it again:
+
+```
+set root=(hd0,gpt3)
+linux /boot/vmlinuz-6.10.5-lfs-12.2 root=/dev/sda3 ro init=/bin/bash
+boot
+```
