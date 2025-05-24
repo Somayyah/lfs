@@ -1130,4 +1130,34 @@ mount: failed to read mtab: No such file or directory
 bash-5.2#
 ```
 
-but /etc/mtab exists...
+but /etc/mtab exists... I rebooted the machine and still the same issue, but wait, /etc/mtab is pointing to a file that doesn't exist:
+
+```
+bash-5.2# ls /etc/mtab
+/etc/mtab
+bash-5.2# less /etc/mtab
+/etc/mtab: No such file or directory
+bash-5.2# ls -l /etc/mtab
+lrwxrwxrwx 1 root root 17 May  5 16:22 /etc/mtab -> /proc/self/mounts
+bash-5.2# ls /proc/self/mounts
+ls: cannot access '/proc/self/mounts': No such file or directory
+bash-5.2#
+```
+
+I created this symlink as per the book in 7.9 section, [the /etc/mtab file contains the currently mounted filesystems. It’s used by the mount and umount commands to mount, list, and unmount the volumes](https://www.baeldung.com/linux/etc-mtab-file)
+
+The /etc/fstab content:
+
+```
+# Begin /etc/fstab
+# file system    mount-point    type    options    dump    fsck
+/dev/sda3       /              ext4    defaults   1       1
+proc            /proc          proc    nosuid,noexec,nodev    0       0
+sysfs           /sys           sysfs   nosuid,noexec,nodev    0       0
+devpts          /dev/pts       devpts  gid=5,mode=620         0       0
+tmpfs           /run           tmpfs   defaults                  0       0
+tmpfs           /dev/shm       tmpfs   mode=0755,nosuid,nodev   0       0
+cgroup2         /sys/fs/cgroup cgroup2 nosuid,nodev,noexec      0       0
+# End /etc/fstab
+(END)
+```
