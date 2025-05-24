@@ -1095,3 +1095,39 @@ set root=(hd0,gpt3)
 linux /boot/vmlinuz-6.10.5-lfs-12.2 root=/dev/sda3 ro init=/bin/bash
 boot
 ```
+
+The /dev directory seems fine....
+
+```
+autofs          loop5          sda3         tty16        tty45        tty63       vcsa
+block           loop6          sda4         tty17        tty46        tty64       vcsa1
+bsg             loop7          sda5         tty18        tty47        tty65       vcsm
+cpu_dma_latency mapper         sda6         tty19        tty48        tty66       vcsu
+full            mem            sg0          tty20        tty49        tty67       vcsu1
+hpet            netlink        snapshot     tty21        tty50        tty68       vga_arbiter
+input           null           sr0          tty22        tty51        tty69       watchdog
+kmsg            nvram          stderr       tty23        tty52        tty7        zero
+loop0           port           stdin        tty24        tty53        tty8        
+loop1           ptp            stdout       tty25        tty54        tty9        
+loop2           random         tty          tty26        tty55        ttyS0       
+loop3           rfkill         tty0         tty27        tty56        urandom     
+loop4           rtc0           tty1         tty28        tty57        usbmon0     
+loop5           sda            tty10        tty29        tty58        usbmon1     
+loop6           sda1           tty11        tty30        tty59        usbmon2     
+loop7           sda2           tty12        tty31        tty60        vcsp        
+sg0             sda3           tty13        tty32        tty61        vcsw        
+snd             sda4           tty14        tty33        tty62        vcst        
+tty             sda5           tty15        tty34        tty63        vcst1       
+tty0            sda6           tty19        tty35        tty64        vcsw1       
+tty1            stderr         tty2         tty36        tty65
+```
+
+tried the command mount and it shows an error:
+
+```
+bash-5.2# mount
+mount: failed to read mtab: No such file or directory
+bash-5.2#
+```
+
+but /etc/mtab exists...
