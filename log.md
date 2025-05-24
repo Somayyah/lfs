@@ -1072,4 +1072,20 @@ Not sure if it will fix the root login issue but it feels wrong to be like this.
 mount -o remount,rw /
 ```
 
-then the editing was successful. Now let's try again.. **It didn't work**
+then the editing was successful. Now let's try again.. **It didn't work** but wait, this line in grub.cfg seems wrong:
+
+```
+# Begin /boot/grub/grub.cfg
+set default=0
+set timeout=5
+insmod part_gpt
+insmod ext2
+set root=(hd0,2)
+menuentry "GNU/Linux, Linux 6.10.5-lfs-12.2" {
+    linux /boot/vmlinuz-6.10.5-lfs-12.2 root=/dev/sda3 ro
+}
+```
+
+I know for a fact that LFS lives in (hd0,gpt3), will try to edit it again, let's see.
+
+Alright so the boot issue is now fixed, I no longer have to manually boot via the grub CLI but the root password isn't fixed yet.
