@@ -1162,4 +1162,21 @@ cgroup2         /sys/fs/cgroup cgroup2 nosuid,nodev,noexec      0       0
 (END)
 ```
 
-To fix the mtab issue:
+I remounted proc as suggested in this answer:
+
+https://unix.stackexchange.com/questions/647916/linux-proc-mounts-deleted-how-to-fix
+
+And now mount command is working, and /proc/self/mounts exists:
+
+```
+bash-5.2# mount -t proc proc /proc
+bash-5.2# mount
+/dev/sda3 on / type ext4 (rw,relatime)
+devtmpfs on /dev type devtmpfs (rw,relatime,size=2007648k,nr_inodes=501912,mode=755)
+proc on /proc type proc (rw,relatime)
+bash-5.2# ls /proc/self/mounts
+/proc/self/mounts
+bash-5.2#
+bash-5.2# ls -l /etc/mtab
+lrwxrwxrwx 1 root root 17 May  5 16:22 /etc/mtab -> /proc/self/mounts
+```
