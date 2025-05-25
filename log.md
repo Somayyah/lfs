@@ -1180,3 +1180,18 @@ bash-5.2#
 bash-5.2# ls -l /etc/mtab
 lrwxrwxrwx 1 root root 17 May  5 16:22 /etc/mtab -> /proc/self/mounts
 ```
+
+But the password reset isn't, wait, what's this error:
+
+```
+/lib/lsb/init-functions: line 606: /bin/echo: No such file or directory
+/lib/lsb/init-functions: line 607: /bin/echo: No such file or directory
+/lib/lsb/init-functions: line 722: /bin/echo: No such file or directory
+/lib/lsb/init-functions: line 731: /bin/echo: No such file or directory
+/lib/lsb/init-functions: line 606: /bin/echo: No such file or directory
+/lib/lsb/init-functions: line 607: /bin/echo: No such file or directory
+/lib/lsb/init-functions: line 722: /bin/echo: No such file or directory
+/lib/lsb/init-functions: line 731: /bin/echo: No such file or directory
+/lib/lsb/init-functions: line 606: /bin/echo: No such file or directory
+/lib/lsb/init-functions: line 607: /bin/echo: No such file or directory
+```
