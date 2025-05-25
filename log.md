@@ -1214,3 +1214,11 @@ bash-5.2#
 Also I don't see proc mounted although it exists in /etc/fstab.. 
 
 **Assumption** The init-functions issue is related to the proc partition not being mounted automatically with other functions.
+
+There's a puzzle piece missing... Let's rebuild Linux-6.10.5 again like in [10.3]
+
+I faced an issue while running ```make mrproper```, it says cc1 doesn't exist, but it does in this weird directory:
+
+/usr/libexec/gcc/x86_64-pc-linux-gnu/13.2.0/cc1
+
+for now im adding it manually to the path but i fear this may be a symptom of a larger issue.
