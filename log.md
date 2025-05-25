@@ -1161,3 +1161,5 @@ cgroup2         /sys/fs/cgroup cgroup2 nosuid,nodev,noexec      0       0
 # End /etc/fstab
 (END)
 ```
+
+To fix the mtab issue:
