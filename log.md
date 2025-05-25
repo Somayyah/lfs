@@ -1195,3 +1195,22 @@ But the password reset isn't, wait, what's this error:
 /lib/lsb/init-functions: line 606: /bin/echo: No such file or directory
 /lib/lsb/init-functions: line 607: /bin/echo: No such file or directory
 ```
+
+In init=/bin/bash mode after fixing proc I can run /lib/lsb/init-functions and it doesn't have issue with echo command:
+
+```
+"/lib/services/init-functions" 862L, 31036B written
+bash-5.2# sh /lib/lsb/init-functions
+Starting...
+bash-5.2# ls /bin/bash
+/bin/bash
+bash-5.2# df -h
+Filesystem     Size  Used Avail Use% Mounted on
+/dev/root       46G   5.9G   38G   14% /
+devtmpfs        2.0G     0   2.0G    0% /dev
+bash-5.2#
+```
+
+Also I don't see proc mounted although it exists in /etc/fstab.. 
+
+**Assumption** The init-functions issue is related to the proc partition not being mounted automatically with other functions.
